@@ -8,52 +8,54 @@
     --black: #000000;
 }
 
-html,
+/* Globale stiler */
 body {
     margin: 0;
-    padding: 0;
-}
-
-body {
+    font-family: 'Montserrat', sans-serif;
     background-color: var(--grey);
-    font-family: "Montserrat", serif;
-    font-size: 20px;
-}
+    color: var(--darkblue);
+    text-align: center;
 
-header, article, aside,  section, footer, main {
-    box-sizing: border-box;
-}
-
-header {
-    width: 100%;
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-    nav {
-        width: 100%;
-        background-color: var(--white);
+/* Header og navigasjon */
+header {
+    background-color: var(--grey);
+    padding: 1rem;
+}
 
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
 
-            a {
-                color: var(--black);
-                padding: calc(0.5rem + 4px) 1rem;
-                display: inline-block;
-                text-decoration: none;
-                border-bottom: 4px solid var(--red);
-            }
+nav li {
+    margin: 0 1rem;
+}
 
-            a:hover {
-                background: var(--yellow);
-                color: var(--black);
-                border-bottom: 4px solid var(--black);
-            }
-        }
-    }
+nav a {
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--white);
+    padding: 1.5rem 2rem;
+    background-color: var(--darkblue);
+}
+
+nav a.active {
+    background-color: var(--white);
+    color: var(--black);
+}
+
+nav a:hover {
+    background-color: var(--white);
+    color: var(--black);
 }
 
