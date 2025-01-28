@@ -23,39 +23,74 @@ body {
     height: 100vh;
 }
 
-/* Header og navigasjon */
+/* Header og */
 header {
     background-color: var(--grey);
     padding: 1rem;
 }
 
+/* Hovedcontainer */
+main {
+    background-color: var(--white);
+    width: 80%;
+    max-width: 900px;
+    min-height: 25vh;
+    margin: 1rem auto;
+    padding: 1rem; 
+    padding: 20px;
+    margin-top: -1rem;
+}
+
+nav {
+    display: flex;
+}
+
 nav ul {
     list-style: none;
+    display: flex;
+    gap: 10px;
     padding: 0;
     margin: 0;
-    display: flex;
-    justify-content: center;
 }
 
-nav li {
-    margin: 0 1rem;
-}
-
-nav a {
-    text-decoration: none;
-    font-weight: bold;
-    color: var(--white);
-    padding: 1.5rem 2rem;
+nav button {
     background-color: var(--darkblue);
+    color: var(--white);
+    font-weight: bold;
+    border: none;
+    padding: 25px 50px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-nav a.active {
+nav button:hover {
     background-color: var(--white);
     color: var(--black);
 }
 
-nav a:hover {
-    background-color: var(--white);
-    color: var(--black);
+/* Innholdsseksjonen */
+#content {
+    padding: 20px;
 }
 
+#content h2 {
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    justify-content: left;
+}
+
+#content p {
+    font-size: 16px;
+    color: var(--black);
+    text-align: left;
+}
+
+#content ul {
+    padding-left: 20px;
+}
+
+#content ul li {
+    margin-bottom: 5px;
+    text-align: left;
+}
