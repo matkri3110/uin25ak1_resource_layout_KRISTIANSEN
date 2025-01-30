@@ -1,5 +1,14 @@
 console.log(resources) // Logger ut resources.js i konsollen slik at vi kan bruke innholdet i koden.
 
+/*
+    Litt generell informasjon om hjelpemidler. Underveis i løsningen av denne oppgaven har jeg brukt GitHub Co-pilot. 
+    Da denne er fin til å brainstorme ideer og gi forslag til mulige løsninger, ettersom den forstår konteksten i koden.
+    Den har også kommet med forslag til noen kommentarer. 
+
+    OpenAIs GPT4.0 har blitt brukt et par ganger til å feilsøke koden underveis. 
+    URL: https://chatgpt.com/auth/login
+/*
+
 let navbarHTML = "" // Lager en tom string som vi skal fylle med HTML for navigasjonsmenyen.
 
 /*
