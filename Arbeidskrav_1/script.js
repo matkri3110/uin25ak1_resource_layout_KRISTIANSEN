@@ -4,6 +4,8 @@ let navbarHTML = "" // Lager en tom string som vi skal fylle med HTML for naviga
 
 /*
     Lager navigasjonsknapper for hver kategori i resource-arrayet.
+    Funnet denne metoden på MDN Web Docs.
+    URL: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
 */
 resources.map(resource => navbarHTML += 
     `
@@ -27,6 +29,8 @@ document.getElementById("menu").innerHTML = navbarHTML // Oppdaterer innholdet i
 /*
     Vi lager en funksjon som skal oppdatere innholdet på siden basert på valgt kategori. 
     .filter brukes for å finne valgt kategori der item.category er lik category. (altså den som er trykket på)
+    Funnet denne metoden på MDN Web Docs.
+    URL: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
 */
 function content(category) {
     const filteredResources = resources.filter(function(item) { 
@@ -44,6 +48,9 @@ function content(category) {
     /*
         Lager en h2 tag for tittel på katgori som skal vises på siden.
         Deretter oppdaterer vi den med tittelen til den valgte kategorien fra ressurs arrayet.
+        
+        Funnet denne metoden på MDN Web Docs.
+        URL: https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
     */
     const heading = document.createElement("h2") 
     heading.textContent = toggledResource.category
@@ -67,6 +74,9 @@ function content(category) {
         Så legger vi til en a-tag.
         Så oppdaterer vi a-taggen med riktig url fra ressurs arrayet.
         Det samme gjør vi også med tittelen. 
+
+        Funnet denne metoden på MDN Web Docs.
+        URL: https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild
     */
 
     toggledResource.sources.forEach(function(source) {
@@ -84,5 +94,5 @@ function content(category) {
     contentContainer.appendChild(list)
 }
 
-// Kjør funksjonen content med "HTML" som standard kategori
+// Kjører funksjonen.
 content("HTML")
