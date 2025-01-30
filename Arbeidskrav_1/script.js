@@ -7,7 +7,7 @@ console.log(resources) // Logger ut resources.js i konsollen slik at vi kan bruk
 
     OpenAIs GPT4.0 har blitt brukt et par ganger til å feilsøke koden underveis. 
     URL: https://chatgpt.com/auth/login
-/*
+*/
 
 let navbarHTML = "" // Lager en tom string som vi skal fylle med HTML for navigasjonsmenyen.
 
