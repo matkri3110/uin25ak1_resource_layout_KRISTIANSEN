@@ -7,9 +7,9 @@ let navbarHTML = "" // Lager en tom string som vi skal fylle med HTML for naviga
 */
 resources.map(resource => navbarHTML += 
     `
-        <ul id="menu">
+        <ul id="nav-menu">
             <li>
-                <button id="menu" onclick="content('${resource.category}')">${resource.category}</button>
+                <button id="category" onclick="content('${resource.category}')">${resource.category}</button>
             </li>
         </ul>
     ` 
@@ -23,21 +23,66 @@ document.getElementById("menu").innerHTML = navbarHTML // Oppdaterer innholdet i
     Så skal vi oppdatere innholdet på siden basert på valgt kategori.
     Innholdet skal bestå av en overskrift, en beskrivelse og lenker til ulike ressurser som kan trykkes på.
 */
-function content(category) {
-    const filteredResources = resources.filter (item => item.category === category) // Filtrer ut ressurser som har samme kategori som den vi trykket på.
-    const toggledResource = filteredResources [0]
-    const contentHTML = 
-    // Lager en template literal som inneholder HTML struktur og nøkler for innholdet vi vil vise.
-    `
-        <h2>${toggledResource.category}</h2>
-        <p id="text">${toggledResource.text}</p>
-        <ul>
-            ${toggledResource.sources.map(source => `<li><a href="${source.url}">${source.title}</a></li>`
-            ).join("")}
-        </ul>
-    `
-// Lager en tom string som vi skal fylle med HTML for innholdet.
 
-document.getElementById("content").innerHTML = contentHTML // Oppdaterer innholdet i contentHTML.
+/*
+    Vi lager en funksjon som skal oppdatere innholdet på siden basert på valgt kategori. 
+    .filter brukes for å finne valgt kategori der item.category er lik category. (altså den som er trykket på)
+*/
+function content(category) {
+    const filteredResources = resources.filter(function(item) { 
+        return item.category === category
+    })
+
+    /*
+        Siden .filter returnerer en array så henter vi det første elementet, da vi vet at det kun er en ressurs per kategori.
+    */
+    const toggledResource = filteredResources[0]
+
+    const contentContainer = document.getElementById("content") // Henter content-containeren
+    contentContainer.innerHTML = "" // Sørger for at content tømmes før nytt innhold legges til
+
+    /*
+        Lager en h2 tag for tittel på katgori som skal vises på siden.
+        Deretter oppdaterer vi den med tittelen til den valgte kategorien fra ressurs arrayet.
+    */
+    const heading = document.createElement("h2") 
+    heading.textContent = toggledResource.category
+
+    /*
+        Lager et p-element for at vi skal ha et sted å legge inn teksten som skal vises på siden.
+        Deretter oppdaterer vi det med teksten til den valgte kategorien fra ressurs arrayet.
+    */
+
+    const paragraph = document.createElement("p")
+    paragraph.id = "text"
+    paragraph.textContent = toggledResource.text
+
+    // Lager en ul-liste
+    const list = document.createElement("ul")
+
+    /*
+        Kode for å genere listen med linker til ressurser.
+        Først løper vi gjennom alle kildene i arrayet.
+        Deretter lager vi et listeelement for hver kilde.
+        Så legger vi til en a-tag.
+        Så oppdaterer vi a-taggen med riktig url fra ressurs arrayet.
+        Det samme gjør vi også med tittelen. 
+    */
+
+    toggledResource.sources.forEach(function(source) {
+        const listItem = document.createElement("li")
+        const link = document.createElement("a")
+        link.href = source.url
+        link.textContent = source.title
+        listItem.appendChild(link)
+        list.appendChild(listItem)
+    })
+
+    // Legger til alle elementer i content-containeren
+    contentContainer.appendChild(heading)
+    contentContainer.appendChild(paragraph)
+    contentContainer.appendChild(list)
 }
-content("HTML") // Kjører funksjonen content med kategorien "HTML" som argument.
+
+// Kjør funksjonen content med "HTML" som standard kategori
+content("HTML")
